@@ -127,11 +127,11 @@ class AuthService {
 
       final authenticated = await _localAuth.authenticate(
         localizedReason: reason ?? AppStrings.biometricPrompt,
-        options: const AuthenticationOptions(
-          stickyAuth: true,
-          biometricOnly: true,
-          useErrorDialogs: true,
-        ),
+        // Core modern parameters:
+        biometricOnly: true,                    // Force biometrics only (no PIN fallback)
+        persistAcrossBackgrounding: true,       // ≈ old stickyAuth: true
+        // authTimeout: Duration(minutes: 1),   // optional - uncomment if needed
+        // useErrorDialogs is gone - system handles it now
       );
 
       if (authenticated) {
@@ -140,6 +140,7 @@ class AuthService {
 
       return authenticated;
     } catch (e) {
+      // You can now catch more specific LocalAuthException if desired
       throw AuthException('Biometric authentication failed: $e');
     }
   }
