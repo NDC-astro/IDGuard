@@ -4,9 +4,9 @@ import '../../../providers/document_provider.dart';
 import '../../../utils/constants.dart';
 import '../../../models/document.dart';
 import '../../../widgets/document_card.dart';
-import '../../document/add_document_screen.dart';
-import '../../document/document_viewer_screen.dart';
-import '../../settings/settings_screen.dart';
+import '../document/add_document_screen.dart';
+import '../document/document_viewer_screen.dart';
+import '../settings/settings_screen.dart';
 
 /// Main home screen with document grid/list
 class HomeScreen extends StatefulWidget {
