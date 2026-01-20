@@ -1,6 +1,4 @@
 import 'package:flutter/foundation.dart';
-import '../models/document.dart';
-import '../services/storage_service.dart';
 
 
 /// Provider for authentication state
