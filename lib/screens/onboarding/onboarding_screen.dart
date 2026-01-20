@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
-import '../../../services/auth_service.dart';
-import '../../auth/pin_setup_screen.dart';
+import '../auth/pin_setup_screen.dart';
 
 /// Onboarding screen with intro slides
 class OnboardingScreen extends StatefulWidget {
