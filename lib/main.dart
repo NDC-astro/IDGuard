@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/splash_screen.dart';
 import 'providers/document_provider.dart';
-import 'providers/auth_provider.dart';
 import 'providers/theme_provider.dart';
 import 'utils/constants.dart';
 
@@ -62,7 +61,7 @@ class IDGuardApp extends StatelessWidget {
         foregroundColor: Colors.white,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: AppConstants.cardElevation,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppConstants.borderRadius),
@@ -113,7 +112,7 @@ class IDGuardApp extends StatelessWidget {
         backgroundColor: AppColors.darkSurface,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.darkCard,
         elevation: AppConstants.cardElevation,
         shape: RoundedRectangleBorder(
