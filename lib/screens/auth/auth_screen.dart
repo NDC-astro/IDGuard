@@ -4,7 +4,6 @@ import '../../services/auth_service.dart';
 import '../../providers/auth_provider.dart';
 import '../../utils/constants.dart';
 import '../home/home_screen.dart';
-import 'pin_setup_screen.dart';
 
 /// Authentication screen for app unlock
 class AuthScreen extends StatefulWidget {
