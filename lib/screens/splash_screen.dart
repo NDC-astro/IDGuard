@@ -3,10 +3,8 @@ import 'package:provider/provider.dart';
 import '../utils/constants.dart';
 import '../services/auth_service.dart';
 import '../providers/document_provider.dart';
-// import '../providers/auth_provider.dart';
 import 'onboarding/onboarding_screen.dart';
 import 'auth/auth_screen.dart';
-import 'home/home_screen.dart';
 
 /// Splash screen shown at app launch
 class SplashScreen extends StatefulWidget {
