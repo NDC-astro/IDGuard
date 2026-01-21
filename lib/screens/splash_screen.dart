@@ -4,6 +4,7 @@ import '../utils/constants.dart';
 import '../services/auth_service.dart';
 import '../providers/document_provider.dart';
 import 'onboarding/onboarding_screen.dart';
+import 'package:idguard/providers/auth_provider.dart';
 import 'auth/auth_screen.dart';
 
 /// Splash screen shown at app launch
