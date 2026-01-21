@@ -1,5 +1,4 @@
-import 'package:flutter/foundation.dart';
-
+import 'package:flutter/material.dart';
 
 /// Provider for authentication state
 class AuthProvider with ChangeNotifier {
