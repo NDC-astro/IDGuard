@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'screens/splash_screen.dart';
 import 'providers/document_provider.dart';
 import 'providers/theme_provider.dart';
+import 'providers/auth_provider.dart';
 import 'utils/constants.dart';
 
 void main() async {
@@ -16,7 +17,29 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(const IDGuardApp());
+  // ────────────────────────────────────────
+  // Create providers early and initialize the ones that need async setup
+  final themeProvider    = ThemeProvider();
+  final authProvider     = AuthProvider();
+  final documentProvider = DocumentProvider();
+
+  // Important: initialize document provider before runApp
+  await documentProvider.initialize();
+
+  // If AuthProvider or ThemeProvider also has async init → await them too
+  // await authProvider.initialize();    // ← if it exists
+  // ────────────────────────────────────────
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: themeProvider),
+        ChangeNotifierProvider.value(value: authProvider),
+        ChangeNotifierProvider.value(value: documentProvider),
+      ],
+      child: const IDGuardApp(),
+    ),
+  );
 }
 
 class IDGuardApp extends StatelessWidget {
@@ -24,24 +47,17 @@ class IDGuardApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => DocumentProvider()),
-      ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, _) {
-          return MaterialApp(
-            title: AppConstants.appName,
-            debugShowCheckedModeBanner: false,
-            theme: _buildLightTheme(),
-            darkTheme: _buildDarkTheme(),
-            themeMode: themeProvider.themeMode,
-            home: const SplashScreen(),
-          );
-        },
-      ),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: AppConstants.appName,
+          debugShowCheckedModeBanner: false,
+          theme: _buildLightTheme(),
+          darkTheme: _buildDarkTheme(),
+          themeMode: themeProvider.themeMode,
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 
