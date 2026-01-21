@@ -41,8 +41,12 @@ dependencies:
   share_plus: ^12.0.1
   device_info_plus: ^12.3.0
   package_info_plus: ^9.0.0
-  flutter_jailbreak_detection: ^1.10.0
+#  flutter_jailbreak_detection: ^1.10.0
 
+flutter_jailbreak_detection:
+  git:
+    url: https://github.com/pdurasie-ecovery/flutter_jailbreak_detection.git
+    ref: add-namespace
 
 dev_dependencies:
   flutter_test:
