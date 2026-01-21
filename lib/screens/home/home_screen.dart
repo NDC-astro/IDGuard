@@ -23,7 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _loadDocuments();
+    // _loadDocuments();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+    Provider.of<DocumentProvider>(context, listen: false).loadDocuments();
+    // or if you extracted it:
+    // _loadDocuments();
+  });
   }
 
   Future<void> _loadDocuments() async {
